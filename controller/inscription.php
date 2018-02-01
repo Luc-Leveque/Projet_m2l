@@ -45,11 +45,7 @@ if(isset($_POST['submit'])){
                    $mdp=sha1(($_POST['mdp']));
                     
                     inscription($nom,$prenom,$mdp,$email,$login);
-                    }
-                }
-            }
-        }
-    }
+}
 
 
 require "view/inscription.php";

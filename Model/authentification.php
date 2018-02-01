@@ -1,20 +1,96 @@
 <?php
 
-function inscription($nom , $prenom , $mdp , $email , $tel, $date_de_naissance, $age, $permis, $adresse, $ville, $cd ){
+function inscriptionsal($nom , $prenom , $mdp , $email , $id_a, $id_c ){
     global $bdd ; 
     
-    $requete = $bdd->prepare("INSERT INTO users(nom,prenom,email,mdp,tel,date_de_naissance,age,permis,adresse,ville,cd)  Values(:nom ,:prenom , :email , :mdp , :tel, :date_de_naissance, :age, :permis, :adresse, :ville, :cd) ");
+    $requete = $bdd->prepare("INSERT INTO salarié(nom_s,prenom_s,email,mdp,id_a,id_c)  Values(:nom ,:prenom , :email , :mdp,:id_a,:id_c) ");
     $requete ->bindValue(":nom",$nom,PDO::PARAM_STR);
     $requete ->bindValue(":prenom",$prenom,PDO::PARAM_STR);
     $requete ->bindValue(":email",$email,PDO::PARAM_STR);
     $requete ->bindValue(":mdp",$mdp,PDO::PARAM_STR);
-    $requete ->bindValue(":tel",$tel,PDO::PARAM_STR);
-    $requete ->bindValue(":date_de_naissance",$date_de_naissance,PDO::PARAM_STR);
-    $requete ->bindValue(":age",$age,PDO::PARAM_STR);
-    $requete ->bindValue(":permis",$permis,PDO::PARAM_STR);
+    $requete ->bindValue(":id_a",$id_a,PDO::PARAM_INT);
+    $requete ->bindValue(":id_c",$id_c,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+}
+
+function inscription($nom , $prenom , $mdp , $email , $id_a, $estchef ){
+    global $bdd ; 
+    
+    $requete = $bdd->prepare("INSERT INTO salarié(nom_s,prenom_s,email,mdp,id_a,estchef)  Values(:nom ,:prenom , :email , :mdp,:id_a,:estchef) ");
+    $requete ->bindValue(":nom",$nom,PDO::PARAM_STR);
+    $requete ->bindValue(":prenom",$prenom,PDO::PARAM_STR);
+    $requete ->bindValue(":email",$email,PDO::PARAM_STR);
+    $requete ->bindValue(":mdp",$mdp,PDO::PARAM_STR);
+    $requete ->bindValue(":id_a",$id_a,PDO::PARAM_INT);$requete ->bindValue(":estchef",$estchef,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+}
+
+function adresses($adresse , $ville , $cp ){
+    global $bdd ; 
+    
+    $requete = $bdd->prepare("INSERT INTO adresse(adresse,commune , cp)  Values(:adresse,:commune , :cp) ");
     $requete ->bindValue(":adresse",$adresse,PDO::PARAM_STR);
-    $requete ->bindValue(":ville",$ville,PDO::PARAM_STR);
-    $requete ->bindValue(":cd",$cd,PDO::PARAM_STR);
+    $requete ->bindValue(":commune",$ville,PDO::PARAM_STR);
+    $requete ->bindValue(":cp",$cp,PDO::PARAM_STR);
+    $requete->execute();
+    
+    return $requete;
+}
+
+function supp($id_s){
+    global $bdd ; 
+
+        $req='DELETE FROM salarié WHERE id_s= :id_s';
+		$req = $bdd->prepare($req);
+		$req = $req->execute(array(
+		':id_s'=> $id_s
+		));  
+}
+
+function suppchef($id_s){
+    global $bdd ; 
+
+        $req='DELETE FROM estchefde WHERE id_s= :id_s';
+		$req = $bdd->prepare($req);
+		$req = $req->execute(array(
+		':id_s'=> $id_s
+		));
+}
+
+function modsa($id_s , $nom , $prenom , $email){
+    global $bdd ; 
+        
+    $requete = $bdd->prepare("UPDATE salarié SET nom_s=:nom_s, prenom_s=:prenom_s, email=:email WHERE id_s = :id_s");
+    $requete ->bindValue(":nom_s",$nom,PDO::PARAM_STR);
+    $requete ->bindValue(":prenom_s",$prenom,PDO::PARAM_STR);
+    $requete ->bindValue(":email",$email,PDO::PARAM_STR);
+    $requete ->bindValue(":id_s",$id_s,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+}
+
+function modmdp($id_s,$mdp){
+    global $bdd ; 
+        
+    $requete = $bdd->prepare("UPDATE salarié SET mdp= :mdp  WHERE id_s = :id_s");
+    $requete ->bindValue(":mdp",$mdp,PDO::PARAM_STR);
+    $requete ->bindValue(":id_s",$id_s,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+}
+
+function estchefde($chef , $salarie){
+    global $bdd ; 
+    
+    $requete = $bdd->prepare("INSERT INTO estchefde(id_c , id_s)  Values(:id_c , :id_s) ");
+    $requete ->bindValue(":id_c",$chef,PDO::PARAM_INT);
+    $requete ->bindValue(":id_s",$salarie,PDO::PARAM_INT);
     $requete->execute();
     
     return $requete;
@@ -22,9 +98,18 @@ function inscription($nom , $prenom , $mdp , $email , $tel, $date_de_naissance, 
 
 function login($email,$mdp){
     global $bdd;
-	$requete = $bdd->prepare("SELECT * FROM users WHERE email =:email AND mdp =:mdp");
+	$requete = $bdd->prepare("SELECT * FROM salarié WHERE email =:email AND mdp =:mdp");
     $requete->bindValue(':email', $email, PDO::PARAM_STR);
     $requete->bindValue(':mdp', $mdp, PDO::PARAM_STR);
+    $requete->execute();
+    
+    return $requete->fetch();
+}
+
+function verifemail($email){
+    global $bdd;
+	$requete = $bdd->prepare("SELECT * FROM salarié WHERE email =:email");
+    $requete->bindValue(':email', $email, PDO::PARAM_STR);
     $requete->execute();
     
     return $requete->fetch();
