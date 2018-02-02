@@ -1,7 +1,7 @@
 <?php
 
 
-require "Model/authentification.php";
+require "../Model/authentification.php";
 
 	if(isset($_POST['submit'])) 
     {
@@ -18,7 +18,7 @@ require "Model/authentification.php";
             {
                 $key = $reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']);    
             }
-            header("location:".BASE_URL."/accueil");
+            header("location:index?=accueil");
         }
         else
         {
@@ -53,4 +53,4 @@ require "Model/authentification.php";
 //    die('sa marche') ;
 //}
 
-require "view/login.php";
+require "../view/login.php";
