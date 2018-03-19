@@ -3,41 +3,46 @@
     <?php if(isset($erreur) && !empty($erreur)){ echo $erreur; } ?>
 </div>
 <form action="" method="POST" id="form" >
-	<legend>Ajouter un nouveau salarié</legend>
+	<legend>Ajouter une nouvelle formation</legend>
 
 	<div class="form-group">
-		<label for="">nom</label>
+		<label for="">Titre</label>
 		<input  name="nom" type="text" class="form-control" id="nom" >
 	</div>
 	
 	<div class="form-group">
-		<label for="">prenom</label>
+		<label for="">Contenu</label>
 		<input name="prenom" type="text" class="form-control" id="prenom" >
 	</div>
 
 	<div class="form-group">
-		<label for="">email</label>
+		<label for="">prerequis</label>
 		<input  name="email" type="text" class="form-control" id="email" >
 	</div>
 	
 	<div class="form-group">
-		<label for="">mdp</label>
+		<label for="">Date_deb</label>
 		<input  name="mdp" type="password" class="form-control" id="mdp" >
 	</div>
 	
 	<div class="form-group">
-		<label for="">Adresse</label>
+		<label for="">Durée</label>
 		<input  name="add" type="text" class="form-control" id="add" >
 	</div>
 	
 
 	<div class="form-group">
-		<label for="">Ville</label>
+		<label for="">Cout en credit</label>
 		<input  name="ville" type="text" class="form-control" id="ville" >
 	</div>
 	
 	<div class="form-group">
-		<label for="">Code postal</label>
+		<label for="">Addresse</label>
+		<input  name="cp" type="text" class="form-control" id="cp" >
+	</div>
+	
+	<div class="form-group">
+		<label for="">Commune</label>
 		<input  name="cp" type="text" class="form-control" id="cp" >
 	</div>
 	

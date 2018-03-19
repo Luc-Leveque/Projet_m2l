@@ -4,7 +4,10 @@
 require "Model/authentification.php";
 
 $id_s = (int)$_GET['id_s']  ; 
+$id_a = (int)$_GET['id_a']  ; 
+
 
 supp($id_s) ; 
+suppadd($id_a) ;
 
-suppchef($id_s) ; 
+header('Location:index.php?page=gestionsalarie');

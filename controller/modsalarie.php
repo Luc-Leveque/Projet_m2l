@@ -38,6 +38,8 @@ $id_s = (int)$_GET['id_s'] ;
         if($etatmdp == 1 && $etat==1){
             modsa($id_s , $nom ,$prenom ,$email);
         }
+        
+        header('Location:index.php?page=gestionsalarie');
     }
 ?>
 <div>

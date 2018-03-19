@@ -1,6 +1,6 @@
 <?php
 
-require "Model/authentification.php";
+require "Model/formation.php";
 
     $_SESSION['connecte']=true;
     $_SESSION['id_s']= 1;
@@ -75,5 +75,5 @@ if(isset($_POST['submit']))
     }
 
 
-require "view/gestionsalarie.php";
+require "view/gestionformation.php";
 ?>

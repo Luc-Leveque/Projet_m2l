@@ -51,13 +51,13 @@ function supp($id_s){
 		));  
 }
 
-function suppchef($id_s){
+function suppadd($id_a){
     global $bdd ; 
 
-        $req='DELETE FROM estchefde WHERE id_s= :id_s';
+        $req='DELETE FROM adresse WHERE id_a= :id_a';
 		$req = $bdd->prepare($req);
 		$req = $req->execute(array(
-		':id_s'=> $id_s
+		':id_a'=> $id_a
 		));
 }
 
@@ -85,16 +85,6 @@ function modmdp($id_s,$mdp){
     return $requete;
 }
 
-function estchefde($chef , $salarie){
-    global $bdd ; 
-    
-    $requete = $bdd->prepare("INSERT INTO estchefde(id_c , id_s)  Values(:id_c , :id_s) ");
-    $requete ->bindValue(":id_c",$chef,PDO::PARAM_INT);
-    $requete ->bindValue(":id_s",$salarie,PDO::PARAM_INT);
-    $requete->execute();
-    
-    return $requete;
-}
 
 function login($email,$mdp){
     global $bdd;
