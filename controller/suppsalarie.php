@@ -11,3 +11,5 @@ supp($id_s) ;
 suppadd($id_a) ;
 
 header('Location:index.php?page=gestionsalarie');
+
+?>
