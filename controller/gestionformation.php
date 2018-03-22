@@ -70,14 +70,15 @@ if(isset($_POST['submit']))
         } 
         if(empty($cp)){
            $etat = 1 ; 
-            $erreur .= "<div class='alert alert-danger' >Le champs codepostal est vide </div>";
+            $erreur .= "<div class='alert alert-danger' >Le champs code postal est vide </div>";
         }
         
         if($etat == 0 ){
             adresses($add,$ville,$cp) ;
             $id_a = $bdd->lastInsertId();
-            presta($nom,$prenom)
-            inscriptionsal($nom ,$prenom , $mdp ,$email,$id_a,$id_c);
+            presta($nom,$prenom);
+            $id_p = $bdd->lastInsertId();
+            ajoutform($titre , $contenu , $prerequis , $date_deb , $duree, $credit,$type,$id_a,$id_p)
 
         }
     }
