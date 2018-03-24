@@ -37,7 +37,7 @@
 	</div>
 	
 	<div class="form-group">
-		<label for="">Addresse</label>
+		<label for="">Adresse</label>
 		<input  name="add" type="text" class="form-control" id="add" >
 	</div>
 	
@@ -50,22 +50,8 @@
 		<label for="">Code Postal</label>
 		<input  name="cp" type="text" class="form-control" id="cp" >
 	</div>
-   
-    <div class="form-group" id="type_form">
-       <label for="">Prestataire</label>
-        <select class="btn btn-default" name="type">
-        <?php   $req = "Select * from prestataire ";
-        $requete = $bdd->query($req);
-
-        while($data = $requete->fetch())
-        {	
-           echo " <option value=".$data['id_p'].">".$data['prenom_p']." ".$data['nom_p']."</option></br>";
-        }
-        ?>
-        </select>
-    </div>
-    
-    <div class="form-group" id="type_form">
+  
+     <div class="form-group" id="type_form">
        <label for="">Type de formation</label>
         <select class="btn btn-default" name="type">
         <?php   $req = "Select * from type_formation ";
@@ -78,14 +64,84 @@
         ?>
         </select>
     </div>
+   
+   <div class="form-group">
+       <label for="">Etat prestataire</label>
+        <select name="etat" id="etat">
+            <option id="ancien" value="0">Le prestataire existe déjà</option>
+            <option id="new" value="1">Nouveau prestataire</option>
+        </select>
+    </div>
+    
+    <div class="form-group" id="bloc_presta">
+		<label for="">Nom du prestataire</label>
+		<input  name="nom_p" type="text" class="form-control" id="nom_p" >
+		<label for="">Prenom du prestataire</label>
+		<input  name="prenom_p" type="text" class="form-control" id="prenom_p" >
+		<label for="">Adresse</label>
+		<input  name="add_p" type="text" class="form-control" id="add" >
+		<label for="">Commune</label>
+		<input  name="ville_p" type="text" class="form-control" id="ville" >
+		<label for="">Code Postal</label>
+		<input  name="cp_p" type="text" class="form-control" id="cp" >
+	</div>
+   
+    <div class="form-group" id="presta">
+       <label for="">Prestataire</label>
+        <select class="btn btn-default" name="presta">
+        <?php   $req = "Select * from prestataire ";
+        $requete = $bdd->query($req);
 
+        while($data = $requete->fetch())
+        {	
+           echo " <option value=".$data['id_p'].">".$data['prenom_p']." ".$data['nom_p']."</option></br>";
+        }
+        ?>
+        </select>
+    </div>
+    
 	<button name="submit" type="submit" class="btn btn-primary">Ajouter</button>
 </form>
+
+<script>
+$(document).change(function(){
+    
+    var valTemp = $("#etat option:selected").val();
+
+    if ((valTemp == '1' )){
+        $("#presta").hide(400);
+        $("#bloc_presta").show(400);
+    }
+    
+    if ((valTemp == '0' )){
+        $("#presta").show(400);
+        $("#bloc_presta").hide(400);
+    }
+    
+    });    
+    
+$(document).ready(function(){
+    
+    var valTemp = $("#etat option:selected").val();
+
+    if ((valTemp == '1' )){
+        $("#presta").hide(400);
+        $("#bloc_presta").show(400);
+    }
+    
+    if ((valTemp == '0' )){
+        $("#presta").show(400);
+        $("#bloc_presta").hide(400);
+    }
+
+});
+ 
+</script>
 
 <div class="contenaire">
     <div class="row">
         <div class="col-xs-7 col-xs-offset-2">
-            <h1>Salarie :</h1>
+            <h1>Formation :</h1>
             <table class="table table-hover">
                 <thead>
                     <tr>
