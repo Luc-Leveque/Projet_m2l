@@ -32,17 +32,36 @@ $req = $bdd->query("SELECT * FROM  formation f ,prestataire p , type_formation t
     <div class="form-group" id="type_form">
        <label for="">Prestataire</label>
         <select class="btn btn-default" name="type">
-        <option value="<?=$req['id_p'] ?>"><?=$req['nom_p']." ".$req['prenom_p'] ?></option>
+        <option value="<?=$req['id_p'] ?>"><?= $req['nom_p'] ?></option>
         <?php   $req2 = "Select * from prestataire ";
         $requete = $bdd->query($req2);
 
         while($data = $requete->fetch())
         {	
-           echo " <option value=".$data['id_p'].">".$data['prenom_p']." ".$data['nom_p']."</option></br>";
+           echo " <option value=".$data['id_p'].">".$data['nom_p']."</option></br>";
         }
         ?>
         </select>
     </div>
+    
+    <div class="form-group">
+       <label for="">Etat prestataire</label>
+        <select name="etat" id="etat">
+            <option id="ancien" value="0">Le prestataire existe déjà</option>
+            <option id="new" value="1">Nouveau prestataire</option>
+        </select>
+    </div>
+    
+    <div class="form-group" id="bloc_presta">
+		<label for="">Nom du prestataire</label>
+		<input  name="nom_p" type="text" class="form-control" id="nom_p" >
+		<label for="">Adresse</label>
+		<input  name="add_p" type="text" class="form-control" id="add" >
+		<label for="">Commune</label>
+		<input  name="ville_p" type="text" class="form-control" id="ville" >
+		<label for="">Code Postal</label>
+		<input  name="cp_p" type="text" class="form-control" id="cp" >
+	</div>
     
     <div class="form-group" id="type_form">
        <label for="">Type de formation</label>
@@ -57,6 +76,41 @@ $req = $bdd->query("SELECT * FROM  formation f ,prestataire p , type_formation t
         ?>
         </select>
     </div>
+    
+    <script>
+$(document).change(function(){
+    
+    var valTemp = $("#etat option:selected").val();
+
+    if ((valTemp == '1' )){
+        $("#presta").hide(400);
+        $("#bloc_presta").show(400);
+    }
+    
+    if ((valTemp == '0' )){
+        $("#presta").show(400);
+        $("#bloc_presta").hide(400);
+    }
+    
+    });    
+    
+$(document).ready(function(){
+    
+    var valTemp = $("#etat option:selected").val();
+
+    if ((valTemp == '1' )){
+        $("#presta").hide(400);
+        $("#bloc_presta").show(400);
+    }
+    
+    if ((valTemp == '0' )){
+        $("#presta").show(400);
+        $("#bloc_presta").hide(400);
+    }
+
+});
+ 
+</script>
 	
 	
 

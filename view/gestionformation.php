@@ -76,8 +76,6 @@
     <div class="form-group" id="bloc_presta">
 		<label for="">Nom du prestataire</label>
 		<input  name="nom_p" type="text" class="form-control" id="nom_p" >
-		<label for="">Prenom du prestataire</label>
-		<input  name="prenom_p" type="text" class="form-control" id="prenom_p" >
 		<label for="">Adresse</label>
 		<input  name="add_p" type="text" class="form-control" id="add" >
 		<label for="">Commune</label>
@@ -94,7 +92,7 @@
 
         while($data = $requete->fetch())
         {	
-           echo " <option value=".$data['id_p'].">".$data['prenom_p']." ".$data['nom_p']."</option></br>";
+           echo " <option value=".$data['id_p'].">".$data['nom_p']."</option></br>";
         }
         ?>
         </select>
@@ -155,11 +153,11 @@ $(document).ready(function(){
                         <th>Ville</th>
                         <th>Code postal</th>
                         <th>Nom du prestataire</th>
-                        <th>Prenom du prestataire</th>
+                        <th>Type de formation</th>
                     </tr>
                 </thead>
                 <?php 
-                            $req = "SELECT * FROM  formation f , adresse a,prestataire p where f.id_a=a.id_a and p.id_a=a.id_a and p.id_p=f.id_p ";
+                            $req = "SELECT * FROM  formation f , adresse a,prestataire p , type_formation t where f.id_a=a.id_a and p.id_p=f.id_p and f.id_t=t.id_t ";
                 
                             $requete = $bdd->query($req);
 
@@ -199,13 +197,13 @@ $(document).ready(function(){
                         <?php echo $data['nom_p']; ?>
                     </td>
                     <td>
-                        <?php echo $data['prenom_p']; ?>
+                        <?php echo $data['libelle']; ?>
                     </td>
                     <td> 
-                        <a href='<?php echo "index.php?page=suppform&id_s=".$data['id_s']."&id_a=".$data['id_a']; ?>'>Supprimer </a> 
+                        <a href='<?php echo "index.php?page=suppform&id_f=".$data['id_f']."&id_a=".$data['id_a']; ?>'>Supprimer </a> 
                     </td>
                     <td> 
-                        <a href='<?php echo "index.php?page=modform&id_s=".$data['id_s']; ?>'>modifier </a> 
+                        <a href='<?php echo "index.php?page=modform&id_f=".$data['id_f']; ?>'>modifier </a> 
                     </td>
 
                 </tr>

@@ -22,10 +22,10 @@ if(isset($_POST['submit']))
         $cp = htmlentities($_POST['cp']);
         $type = htmlentities($_POST['type']);  
         $nom = htmlentities($_POST['nom_p']);
-        $prenom = htmlentities($_POST['prenom_p']);
         $add_p = htmlentities($_POST['add_p']);
         $ville_p = htmlentities($_POST['ville_p']);
         $cp_p = htmlentities($_POST['cp_p']);
+        $id_p = htmlentities($_POST['presta']);
         
         
         $etat = 0 ; 
@@ -40,11 +40,7 @@ if(isset($_POST['submit']))
                 $etat = 1 ;
                 $erreur .= "<div class='alert alert-danger' >Format du nom est incorect</div>";
             }
-
-            if(!preg_match("#^([A-Za-z -']{1,})$#",$prenom)){
-                $etat = 1 ;
-                $erreur .= "<div class='alert alert-danger' >Format du prenom est incorect </div>";
-            }
+            
             if(empty($add_p)){
                 $etat = 1 ; 
                 $erreur .= "<div class='alert alert-danger' >Le champs adresse du prestataire est vide </div>";
@@ -107,13 +103,20 @@ if(isset($_POST['submit']))
             if($inspresta == 1 ){
                 adresses($add_p,$ville_p,$cp_p) ;
                 $id_a = $bdd->lastInsertId();
-                presta($nom,$prenom , $id_a) ;
+                presta($nom, $id_a) ;
                 $id_p = $bdd->lastInsertId();
                 adresses($add,$ville,$cp) ;
                 $id_a = $bdd->lastInsertId();
                 ajoutform($titre , $contenu , $prerequis , $date_deb , $duree, $credit,$type,$id_a,$id_p);
 
         }
+        else{
+            adresses($add,$ville,$cp) ;
+            $id_a = $bdd->lastInsertId();
+            ajoutform($titre , $contenu , $prerequis , $date_deb , $duree, $credit,$type,$id_a,$id_p);
+        }
+
+        
     }
 }
 

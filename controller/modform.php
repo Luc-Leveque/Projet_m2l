@@ -5,45 +5,69 @@ $id_f = (int)$_GET['id_f'] ;
 
     if(isset($_POST['submit'])) 
     {
-        $etatmdp = 0 ;
-        $etat = 1 ;
+        
+        $etat = 0 ;
         $erreur="";
+        $inspresta = 0 ;
         
         $email = htmlentities($_POST['email']);
         $nom = htmlentities($_POST['nom']);
         $prenom = htmlentities($_POST['prenom']);
-        $newmdp = sha1(htmlentities($_POST['newmdp']));
-        $confmdp = sha1(htmlentities($_POST['confmdp']));
+
+        
+        
+         if($_POST['etat'] == 1){
+            
+            $inspresta = 1 ;
+            
+            if( !preg_match("#^([A-Za-z -']{1,})$#",$nom)){
+                $etat = 1 ;
+                $erreur .= "<div class='alert alert-danger' >Format du nom est incorect</div>";
+            }
+            
+            if(empty($add_p)){
+                $etat = 1 ; 
+                $erreur .= "<div class='alert alert-danger' >Le champs adresse du prestataire est vide </div>";
+            } 
+            if(empty($ville_p)){
+                $etat = 1 ; 
+                $erreur .= "<div class='alert alert-danger' >Le champs ville du prestataire est vide </div>";
+            } 
+            if(empty($cp_p)){
+                $etat = 1 ; 
+                $erreur .= "<div class='alert alert-danger' >Le champs code postal du prestataire est vide </div>";
+            }
+            
+        }
         
         if(!preg_match("#^([A-Za-z- _']{1,})$#",$nom)){
-            $etat = 0 ;
+            $etat = 1 ;
             $erreur .= "<div class='alert alert-danger' >Format du nom incorect </div>";
         }
         if(!preg_match("#^([A-Za-z -_']{1,})$#",$prenom)){
-            $etat = 0 ;
+            $etat = 1 ;
             $erreur .= "<div class='alert alert-danger' >Format du prenom incorect </div>";
         }
-            
-        if(!empty($newmdp)  && !empty($confmdp)){
-            if($newmdp == $confmdp){
-                modmdp($id_s ,$newmdp);
-                $etatmdp = 1 ; 
+         
+        
+        if($etat==0){
+            if($inspresta == 1){
+                adresses($add_p,$ville_p,$cp_p) ;
+                $id_a = $bdd->lastInsertId();
+                presta($nom, $id_a) ;
+                $id_p = $bdd->lastInsertId();
+                modform($id_s , $nom ,$prenom ,$email);
             }
-            else{ $erreur .= "<div class='alert alert-danger' > Les mots de passes ne corespondent pas </div>"; }
-        }
-        if(empty($newmdp)  && empty($confmdp) && $etat==1){        
-            modsa($id_s , $nom ,$prenom ,$email);
-        }
-        
-        if($etatmdp == 1 && $etat==1){
-            modsa($id_s , $nom ,$prenom ,$email);
+            else{
+                modform($id_s , $nom ,$prenom ,$email);
+            }
         }
         
-        header('Location:index.php?page=gestionsalarie');
+        header('Location:index.php?page=gestionformation');
     }
 ?>
 <div>
     <?php if(isset($erreur) && !empty($erreur)){ echo $erreur; } ?>
 </div>
 <?php
-require "view/modsalrie.php";
+require "view/modform.php";

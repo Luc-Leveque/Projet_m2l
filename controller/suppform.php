@@ -1,7 +1,7 @@
 <?php
 
 
-require "Model/authentification.php";
+require "Model/formation.php";
 
 $id_f = (int)$_GET['id_f']  ; 
 $id_a = (int)$_GET['id_a']  ; 
