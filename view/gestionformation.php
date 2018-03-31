@@ -2,6 +2,8 @@
 <div>
     <?php if(isset($erreur) && !empty($erreur)){ echo $erreur; } ?>
 </div>
+
+<div class="container">
 <form action="" method="POST" id="form" >
 	<legend>Ajouter une nouvelle formation</legend>
 
@@ -98,9 +100,10 @@
         </select>
     </div>
     
+    
 	<button name="submit" type="submit" class="btn btn-primary">Ajouter</button>
 </form>
-
+</div>
 <script>
 $(document).change(function(){
     
@@ -136,82 +139,49 @@ $(document).ready(function(){
  
 </script>
 
-<div class="contenaire">
-    <div class="row">
-        <div class="col-xs-7 col-xs-offset-2">
-            <h1>Formation :</h1>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Titre</th>
-                        <th>Contenu</th>
-                        <th>Prerequis</th>
-                        <th>Date de debut</th>
-                        <th>Durée</th>
-                        <th>Cout en credit</th>
-                        <th>Adresse</th>
-                        <th>Ville</th>
-                        <th>Code postal</th>
-                        <th>Nom du prestataire</th>
-                        <th>Type de formation</th>
-                    </tr>
-                </thead>
-                <?php 
-                            $req = "SELECT * FROM  formation f , adresse a,prestataire p , type_formation t where f.id_a=a.id_a and p.id_p=f.id_p and f.id_t=t.id_t ";
-                
-                            $requete = $bdd->query($req);
+<div class="table-responsive">
+  <h2>Formations</h2>            
+  <table class="table table-condensed table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Titre</th>
+            <th>Date de debut</th>
+            <th>Durée</th> 
+            <th>Cout en credit</th>
+            <th>Ville</th>
+            <th>Nom du prestataire</th>
+            <th>Type de formation</th>
+      </tr>
+    </thead>
+    <tbody>
 
-                            while($data = $requete->fetch())
-                            {
-                            ?>
-            <tbody>
+    <?php 
+                $req = "SELECT * FROM  formation f , adresse a,prestataire p , type_formation t where f.id_a=a.id_a and p.id_p=f.id_p and f.id_t=t.id_t ";
+
+                $requete = $bdd->query($req);
+
+                while($data = $requete->fetch())
+                {
+                ?>
                 <tr>
-                    <td>
-                        <?php echo $data['Titre']; ?>
+                    <td><?php echo $data['Titre']; ?></td>
+                    <td><?php echo $data['date_deb']; ?></td>
+                    <td><?php echo $data['nbr_jour']; ?></td>
+                    <td><?php echo $data['cout_credit']; ?></td>
+                    <td><?php echo $data['adresse']; ?></td>
+                    <td><?php echo $data['nom_p']; ?></td>
+                    <td><?php echo $data['libelle']; ?></td>
+                    <td><a href='<?php echo "index.php?page=viewform&id_f=".$data['id_f']; ?>'>Voire</a> 
                     </td>
-                    <td>
-                        <?php echo $data['contenu']; ?>
+                    <td><a href='<?php echo "index.php?page=suppform&id_f=".$data['id_f']."&id_a=".$data['id_a']; ?>'>Supprimer </a></td>
+                    <td><a href='<?php echo "index.php?page=modform&id_f=".$data['id_f']; ?>'>modifier</a>
                     </td>
-                    <td>
-                        <?php echo $data['prerequis']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['date_deb']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['nbr_jour']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['cout_credit']; ?>
-                    </td>
-                       <td>
-                        <?php echo $data['adresse']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['commune']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['cp']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['nom_p']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['libelle']; ?>
-                    </td>
-                    <td> 
-                        <a href='<?php echo "index.php?page=suppform&id_f=".$data['id_f']."&id_a=".$data['id_a']; ?>'>Supprimer </a> 
-                    </td>
-                    <td> 
-                        <a href='<?php echo "index.php?page=modform&id_f=".$data['id_f']; ?>'>modifier </a> 
-                    </td>
-
                 </tr>
-            </tbody>
                     <?php
 }
-echo "</table>";
 ?>
-        </div>
-    </div>
+        </tbody>
+    </table>
 </div>
+    
+

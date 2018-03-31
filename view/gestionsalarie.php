@@ -2,6 +2,8 @@
 <div>
     <?php if(isset($erreur) && !empty($erreur)){ echo $erreur; } ?>
 </div>
+
+<div class="container">
 <form action="" method="POST" id="form" >
 	<legend>Ajouter un nouveau salarié</legend>
 
@@ -65,6 +67,7 @@
 
 	<button name="submit" type="submit" class="btn btn-primary">Ajouter</button>
 </form>
+    </div>
 
 <script>
     $(function(){       
@@ -75,11 +78,9 @@
     });
 </script>
 
-<div class="contenaire">
-    <div class="row">
-        <div class="col-xs-7 col-xs-offset-2">
-            <h1>Salarie :</h1>
-            <table class="table table-hover">
+<div class="table-responsive">
+  <h2>Salarie</h2>            
+  <table class="table table-condensed table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Nom</th>
@@ -90,43 +91,30 @@
                     </tr>
                 </thead>
                 <?php 
-                            $req = "SELECT * FROM  salarié where estchef!=2 order by estchef desc";
-                
-                            $requete = $bdd->query($req);
+                $req = "SELECT * FROM  salarié where estchef!=2 order by estchef desc";
 
-                            while($data = $requete->fetch())
-                            {
-                            ?>
-                    <tbody>
-                   <tr>
-                    <td>
-                        <?php echo $data['nom_s']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['prenom_s']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['mdp']; ?>
-                    </td>
-                    <td>
-                        <?php echo $data['email']; ?>
-                    </td>
-                    <td>
-                        <?php if($data['estchef']==1){
-                                echo"oui";
-                            }else{echo"non";} ?>
-                    </td>
-                        <td> <a href='<?php echo "index.php?page=suppsalarie&id_s=".$data['id_s']."&id_a=".$data['id_a']; ?>'>Supprimer </a> 
+                $requete = $bdd->query($req);
+
+                while($data = $requete->fetch())
+                {
+                ?>
+                <tbody>
+                    <tr>
+                        <td><?php echo $data['nom_s']; ?></td>
+                        <td><?php echo $data['prenom_s']; ?></td>
+                        <td><?php echo $data['mdp']; ?></td>
+                        <td><?php echo $data['email']; ?></td>
+                        <td><?php if($data['estchef']==1){echo"oui";}else{echo"non";} ?></td>
+                        <td><a href='<?php echo "index.php?page=viewSal&id_f=".$data['id_f']; ?>'>Voire</a> 
                         </td>
-                        <td> <a href='<?php echo "index.php?page=modsalarie&id_s=".$data['id_s']; ?>'>modifier </a> 
+                        <td><a href='<?php echo "index.php?page=suppsalarie&id_s=".$data['id_s']."&id_a=".$data['id_a']; ?>'>Supprimer</a> 
                         </td>
-                        
-                        </tr>
-                    </tbody>
-                    <?php
-}
-echo "</table>";
-?>
-        </div>
-    </div>
+                        <td><a href='<?php echo "index.php?page=modsalarie&id_s=".$data['id_s']; ?>'>modifier </a></td>
+
+                    </tr>
+                </tbody>
+                <?php
+                }
+                ?>
+    </table>
 </div>

@@ -10,6 +10,6 @@ $id_a = (int)$_GET['id_a']  ;
 supp($id_s) ; 
 suppadd($id_a) ;
 
-header('Location:index.php?page=gestionsalarie');
+header('Location:index.php?page=gestionslarie');
 
 ?>

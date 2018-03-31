@@ -1,7 +1,7 @@
 <?php
 
 
-require "../Model/authentification.php";
+require "Model/authentification.php";
 
 	if(isset($_POST['submit'])) 
     {
@@ -53,4 +53,4 @@ require "../Model/authentification.php";
 //    die('sa marche') ;
 //}
 
-require "../view/login.php";
+require "view/login.php";
