@@ -3,6 +3,11 @@
 
 require "Model/authentification.php";
 
+
+
+$emailsaisie= "";
+$erreur = "";
+
 	if(isset($_POST['submit'])) 
     {
         $email = htmlentities($_POST['email']);
@@ -13,16 +18,20 @@ require "Model/authentification.php";
             $_SESSION['nom']= $reponse['nom_s'];
             $_SESSION['prenom']= $reponse['prenom_s'];
             $_SESSION['email']= $reponse['email'];
+            $_SESSION['credit']= $reponse['credit'];
+            $_SESSION['nbj']= $reponse['nbj'];
             $_SESSION['lvl']= $reponse['estchef'];
             if(isset($_POST['remember']))
             {
                 $key = $reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']);    
             }
-            header("location:index?=accueil");
+            header('Location: ' . BASE_URL . '/accueil');
         }
         else
         {
-        	echo "<meta http-equiv='refresh' content='3; URL=index.php?page=accueil' />";
+        	$erreur = '<div class="alert alert-danger" >Mauvais identifiant</div>';
+            $emailsaisie= $email;
+            
         }
     }
 /*    if(isset($_COOKIE['Auth']))

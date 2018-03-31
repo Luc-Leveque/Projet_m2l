@@ -1,13 +1,17 @@
 <!DOCTYPE html>
+
+<?php if(isset($_SESSION['id'])){ ?>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" media="screen" href="<?= BASE_URL ;?>/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?= BASE_URL ;?>/css/style.css" />
+<script src="<?= BASE_URL ;?>/js/jquery.js"></script>
+<script src="<?= BASE_URL ;?>/js/bootstrap.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 
@@ -23,7 +27,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="<?php echo BASE_URL; ?>/accueil">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
@@ -34,7 +38,29 @@
     </div>
   </div>
 </nav>
-  
+ <?php }?>
+ 
+<?php if(!isset($_SESSION['id'])){ ?>
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ConnexionM2l</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="<?= BASE_URL ;?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL ;?>/css/style.css" />
+    <script src="<?= BASE_URL ;?>/js/jquery.js"></script>
+    <script src="<?= BASE_URL ;?>/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+
+ <?php }?>  
             
     <?php  
     

@@ -12,10 +12,10 @@ define('ROOT',dirname(WEBROOT));
 define('DS',DIRECTORY_SEPARATOR);
 define('CORE',ROOT.DS.'core');
 
-//if(!isset($_SESSION['id_u'])){
-//    include "controller/login.php";
-//}
-//else{
+if(!isset($_SESSION['id'])){
+        $page="login";
+}
+else{
     if(!isset($_GET['page']) || $_GET['page'] =="")
                 $page = "accueil";
             else
@@ -28,7 +28,7 @@ define('CORE',ROOT.DS.'core');
                     $page = $_GET['page'];
             }
 
-
+}
     ob_start();
 
     include "controller/".$page.".php";
@@ -36,5 +36,4 @@ define('CORE',ROOT.DS.'core');
     ob_end_clean();
 
     require "layout.php";
-//}
 ?>

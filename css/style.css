@@ -1,27 +1,21 @@
-/*body{background: rgba(226,226,226,1);
-background: -moz-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 0%, rgba(209,209,209,0.52) 100%);
-background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(0%, rgba(219,219,219,1)), color-stop(100%, rgba(209,209,209,0.52)));
-background: -webkit-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 0%, rgba(209,209,209,0.52) 100%);
-background: -o-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 0%, rgba(209,209,209,0.52) 100%);
-background: -ms-linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 0%, rgba(209,209,209,0.52) 100%);
-background: linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 0%, rgba(209,209,209,0.52) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#d1d1d1', GradientType=1 );
-}*/
+body{background: #c4c2c2; }
 
 
 /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
-      margin-bottom: 0;
+      margin-bottom: 20px;
       border-radius: 0;
     }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
+    .row.content {
+        height: 100% ;
+        background-color: #f1f1f1;}
     
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #f1f1f1;
+      background-color: #c4c2c2;
       height: 100%; 
     }
     
@@ -40,3 +34,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', end
       }
       .row.content {height:auto;} 
     }
+.text-left {
+    width: 70% ;
+    
+}
+
+.center {
+    margin: 200px;   
+}
