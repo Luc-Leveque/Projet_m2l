@@ -74,5 +74,70 @@ function modform($id_s , $nom ,$prenom ,$email) {
     return $requete;
    
 }
+function demande($id_s,$id_f,$etat){
+    
+    global $bdd ; 
+    
+    $requete = $bdd->prepare("INSERT INTO participer(id_s,id_f,etat)  Values(:id_s,:id_f,:etat) ");
+    $requete ->bindValue(":id_s",$id_s,PDO::PARAM_INT);
+    $requete ->bindValue(":id_f",$id_f,PDO::PARAM_INT);
+    $requete ->bindValue(":etat",$etat,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+    
+}
+
+function verifdejademande($id_f,$id_s){
+    global $bdd;
+	$requete = $bdd->prepare("SELECT * FROM participer WHERE id_f=:id_f and id_s= :id_s ");
+    $requete ->bindValue(":id_s",$id_s,PDO::PARAM_INT);
+    $requete ->bindValue(":id_f",$id_f,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete->fetch();
+}
+
+
+function all_form()
+{
+    global $bdd;
+
+    $req = $bdd->prepare("SELECT * FROM  formation f , adresse a,prestataire p , type_formation t where f.id_a=a.id_a and p.id_p=f.id_p and f.id_t=t.id_t ");
+    $req->execute();
+    return($req);
+}
+
+function demandeencours($id_u){
+    
+    global $bdd;
+
+    $req = $bdd->prepare("SELECT * FROM  formation f ,salarié s , participer pa , prestataire p  where  pa.id_s=s.id_s and f.id_f=pa.id_f and  p.id_p=f.id_p and etat = 0 and id_c= $id_u  ");
+    $req->execute();
+    return($req);
+}
+
+function demandevalider($id_u){
+    
+    global $bdd;
+
+    $req = $bdd->prepare("SELECT * FROM  formation f ,salarié s , participer pa , prestataire p  where  pa.id_s=s.id_s and f.id_f=pa.id_f and  p.id_p=f.id_p and etat = 2 and id_c= $id_u  ");
+    $req->execute();
+    return($req);
+}
+
+function validerdemande($id_f,$id_s){
+    
+    global $bdd ; 
+        
+    $requete = $bdd->prepare("UPDATE participer SET etat = 2 WHERE id_s = :id_s and id_f=:id_f");
+    $requete ->bindValue(":id_s",$id_s,PDO::PARAM_INT);
+    $requete ->bindValue(":id_f",$id_f,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+    
+}
+
 
 ?>

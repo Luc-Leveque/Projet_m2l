@@ -27,7 +27,6 @@ if(isset($_POST['submit']))
         $cp_p = htmlentities($_POST['cp_p']);
         $id_p = htmlentities($_POST['presta']);
         
-        
         $etat = 0 ; 
         $inspresta = 0 ; 
       
@@ -101,6 +100,7 @@ if(isset($_POST['submit']))
         
         if($etat == 0 ){
             if($inspresta == 1 ){
+                
                 adresses($add_p,$ville_p,$cp_p) ;
                 $id_a = $bdd->lastInsertId();
                 presta($nom, $id_a) ;

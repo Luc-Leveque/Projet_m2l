@@ -9,7 +9,7 @@ if(isset($_SESSION['id'])){
 ?>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Application M2l</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -48,7 +48,7 @@ if(isset($_SESSION['id'])){
         if(isset($_SESSION['lvl']) && $_SESSION['lvl']==1 ){?>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Application M2l</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -76,7 +76,7 @@ if(isset($_SESSION['id'])){
         <li <?php if($page == "Formations"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/Formations">Liste des formations</a></li>
         <li <?php if($page == "historique"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/historique">Historique</a></li>
         <li <?php if($page == "liste"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/liste">Liste des salarié sous ma responsabilité</a></li>
-        <li <?php if($page == "Demande_formation"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/Demande_formation">Demande de formations</a></li>
+        <li <?php if($page == "Demande_formation"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/Demandeformation">Demande de formations</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo BASE_URL; ?>/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
@@ -89,7 +89,7 @@ if(isset($_SESSION['id'])){
         if(isset($_SESSION['lvl']) && $_SESSION['lvl']==2 ){?>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Application M2l</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -130,7 +130,7 @@ if(isset($_SESSION['id'])){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ConnexionM2l</title>
+    <title>Connexion M2l</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" media="screen" href="<?= BASE_URL ;?>/css/bootstrap.min.css">
@@ -142,8 +142,7 @@ if(isset($_SESSION['id'])){
 
 <body>
 
- <?php }?>  
-            
+ <?php }?>
     <?php  
     
       echo flash() ;  
