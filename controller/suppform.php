@@ -10,6 +10,6 @@ $id_a = (int)$_GET['id_a']  ;
 suppform($id_f) ; 
 suppadd($id_a) ;
 
-header('Location:index.php?page=gestionformation');
+header('Location: ' . BASE_URL . '/gestionformation');
 
 ?>

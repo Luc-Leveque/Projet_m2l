@@ -1,5 +1,5 @@
 <?php
     session_start();
-    session_destroy();
-    header("location:index?page=login");   
+    session_destroy(); 
+    header('Location: ' . BASE_URL . '/login');
 ?>

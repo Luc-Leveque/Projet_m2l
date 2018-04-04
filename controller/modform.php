@@ -62,8 +62,7 @@ $id_f = (int)$_GET['id_f'] ;
                 modform($id_s , $nom ,$prenom ,$email);
             }
         }
-        
-        header('Location:index.php?page=gestionformation');
+        header('Location: ' . BASE_URL . '/gestionformation');
     }
 ?>
 <div>

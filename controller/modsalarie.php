@@ -39,7 +39,7 @@ $id_s = (int)$_GET['id_s'] ;
             modsa($id_s , $nom ,$prenom ,$email);
         }
         
-        header('Location:index.php?page=gestionsalarie');
+        header('Location: ' . BASE_URL . '/gestionsalarie');
     }
 ?>
 <div>

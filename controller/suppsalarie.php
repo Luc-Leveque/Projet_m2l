@@ -10,6 +10,6 @@ $id_a = (int)$_GET['id_a']  ;
 supp($id_s) ; 
 suppadd($id_a) ;
 
-header('Location:index.php?page=gestionslarie');
+header('Location: ' . BASE_URL . '/gestionsalarie');
 
 ?>
