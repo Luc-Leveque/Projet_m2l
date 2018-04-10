@@ -74,6 +74,19 @@ function modsa($id_s , $nom , $prenom , $email){
     return $requete;
 }
 
+function modad($id_a , $add ,$ville ,$cp){
+    global $bdd ; 
+        
+    $requete = $bdd->prepare("UPDATE adresse SET commune=:commune, cp=:cp, adresse=:adresse WHERE id_a = :id_a");
+    $requete ->bindValue(":commune",$ville,PDO::PARAM_STR);
+    $requete ->bindValue(":cp",$cp,PDO::PARAM_STR);
+    $requete ->bindValue(":adresse",$add,PDO::PARAM_STR);
+    $requete ->bindValue(":id_a",$id_a,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+}
+
 function modmdp($id_s,$mdp){
     global $bdd ; 
         

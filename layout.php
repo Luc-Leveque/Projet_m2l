@@ -36,6 +36,7 @@ if(isset($_SESSION['id'])){
         <li <?php if($page == "Mes_Formation"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/Mes_Formation">Mes formations</a></li>
         <li <?php if($page == "Formations"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/Formations">Liste des formations</a></li>
         <li <?php if($page == "historique"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/historique">Historique</a></li>
+        <li <?php if($page == "modsalarie"){echo 'class="active"';} ?>><a href="<?php echo BASE_URL; ?>/modsalarie">Modifier mon compte</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo BASE_URL; ?>/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>

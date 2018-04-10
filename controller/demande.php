@@ -10,7 +10,7 @@ if($_SESSION['lvl'] == 1 ){$etat = 1;}
 
 
 if(verifdejademande($id_f,$id_s)){
-    
+    $_SESSION['erreur'] = 1 ;
 }
 else{demande($id_s,$id_f,$etat);}
 

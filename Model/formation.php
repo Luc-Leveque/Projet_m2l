@@ -126,6 +126,15 @@ function demandevalider($id_u){
     return($req);
 }
 
+function demanderefuser($id_u){
+    
+    global $bdd;
+
+    $req = $bdd->prepare("SELECT * FROM  formation f ,salarié s , participer pa , prestataire p  where  pa.id_s=s.id_s and f.id_f=pa.id_f and  p.id_p=f.id_p and etat = 1 and id_c= $id_u  ");
+    $req->execute();
+    return($req);
+}
+
 function validerdemande($id_f,$id_s){
     
     global $bdd ; 
@@ -138,6 +147,20 @@ function validerdemande($id_f,$id_s){
     return $requete;
     
 }
+
+function refuserdemande($id_f,$id_s){
+    
+    global $bdd ; 
+        
+    $requete = $bdd->prepare("UPDATE participer SET etat = 1 WHERE id_s = :id_s and id_f=:id_f");
+    $requete ->bindValue(":id_s",$id_s,PDO::PARAM_INT);
+    $requete ->bindValue(":id_f",$id_f,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+    
+}
+
 
 
 ?>
