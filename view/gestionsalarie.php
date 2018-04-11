@@ -108,6 +108,10 @@
                         <td><a href='<?php echo "index.php?page=suppsalarie&id_s=".$data['id_s']."&id_a=".$data['id_a']; ?>'>Supprimer</a> 
                         </td>
                         <td><a href='<?php echo "index.php?page=modsalarie&id_s=".$data['id_s']; ?>'>modifier </a></td>
+                        <?php if($data['estchef']==0){ ?>
+                        <td><a href='<?php echo "index.php?page=promsalarie&id_s=".$data['id_s']; ?>'>Promouvoir</a> 
+                        </td>
+                        <?php } ?>
 
                     </tr>
                 </tbody>

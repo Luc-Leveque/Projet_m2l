@@ -108,6 +108,15 @@ function all_form()
     return($req);
 }
 
+function mes_form($id_s)
+{
+    global $bdd;
+
+    $req = $bdd->prepare("SELECT * FROM  formation f ,salarié s , participer pa , prestataire p ,type_formation t ,adresse a where  pa.id_s=s.id_s and f.id_a=a.id_a and  f.id_t=t.id_t and  f.id_f=pa.id_f and  p.id_p=f.id_p  and s.id_s= $id_s  ");
+    $req->execute();
+    return($req);
+}
+
 function demandeencours($id_u){
     
     global $bdd;
