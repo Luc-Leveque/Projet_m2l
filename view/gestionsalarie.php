@@ -90,11 +90,8 @@
                     </tr>
                 </thead>
                 <?php 
-                $req = "SELECT * FROM  salarié where estchef!=2 order by estchef desc";
-
-                $requete = $bdd->query($req);
-
-                while($data = $requete->fetch())
+      
+                while($data = $res->fetch())
                 {
                 ?>
                 <tbody>

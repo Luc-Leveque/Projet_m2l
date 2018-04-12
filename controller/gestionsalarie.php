@@ -1,12 +1,9 @@
 <?php
 
 require "Model/authentification.php";
+require "Model/chef.php";
 
-    $_SESSION['connecte']=true;
-    $_SESSION['id_s']= 1;
-    $_SESSION['estchef']= 1;
-    $id_chef = $_SESSION['id_s'];
-
+$res = all_sal();
 
 if(isset($_POST['submit'])) 
     {
@@ -64,12 +61,14 @@ if(isset($_POST['submit']))
                 adresses($add,$ville,$cp) ;
                 $id_a = $bdd->lastInsertId();
                 inscriptionsal($nom ,$prenom , $mdp ,$email,$id_a,$id_c);
+                header('Location: ' . BASE_URL . '/gestionsalarie');
             }
             else{
                 $estchef = 1 ; 
                 adresses($add,$ville,$cp) ;
                 $id_a = $bdd->lastInsertId();
                 inscription($nom ,$prenom , $mdp ,$email,$id_a,$estchef);
+                header('Location: ' . BASE_URL . '/gestionsalarie');
             }
         }
     }
