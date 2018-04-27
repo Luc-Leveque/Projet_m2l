@@ -144,6 +144,16 @@ function demanderefuser($id_u){
     return($req);
 }
 
+function comm($id_f){
+        
+    global $bdd;
+
+    $req2 = $bdd->prepare("SELECT * FROM commentaire c,salarié s where s.id_s=c.id_u and id_f=$id_f  ");
+    $req2->execute();
+    return($req2);
+    
+}
+
 function validerdemande($id_f,$id_s){
     
     global $bdd ; 
@@ -170,6 +180,19 @@ function refuserdemande($id_f,$id_s){
     
 }
 
+
+
+function poster($id_s,$id_f,$comm){
+    global $bdd ; 
+    
+    $requete = $bdd->prepare("INSERT INTO commentaire(id_u,id_f,libelle )  Values(:id_u,:id_f,:libelle) ");
+    $requete ->bindValue(":libelle",$comm,PDO::PARAM_STR);
+    $requete ->bindValue(":id_u",$id_s,PDO::PARAM_INT);
+    $requete ->bindValue(":id_f",$id_f,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+}
 
 
 ?>

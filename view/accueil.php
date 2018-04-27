@@ -1,44 +1,65 @@
 <h1>Les derniers articles</h1>
 
-<?php
-    foreach($formations as $formation)
-    {
-    ?>
-    <div class="container">
-    <div class="panel-heading">
-            <p class="MakaleYazariAdi"><?= $formation['Titre'] ; ?></p>
-            <div class="btn-group" style="float:right;">
-            	<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            		<span class="glyphicon glyphicon-cog"></span>
-            		<span class="sr-only">Toggle Dropdown</span>
-            	</button>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="media">
-                <div class="media-body">
-                <p> <?= $formation['contenu'] ; ?></p>
-                    <h4>Prerequis :</h4><p> <?= $formation['prerequis'] ; ?></p> 
-                <p>Pebut de la formation : <?= $formation['date_deb'] ; ?></p> 
-                <p>Durée de la formation : <?= $formation['nbr_jour'] ; ?></p>
-                <div class="clearfix"></div>                
-               </div>
-            </div>
-        </div>
-    </div>
-</div> 
-    <?php   
-    }
-?>
 
-<ul class="pagination">
-  <li ><a href="index?page=accueil&&num_page=1">1</a></li>
-  <li><a href="index?page=accueil&&num_page=2">2</a></li>
-  <li><a href="index?page=accueil&&num_page=3">3</a></li>
-  <li><a href="index?page=accueil&&num_page=4">4</a></li>
-  <li><a href="index?page=accueil&&num_page=5">5</a></li>
-</ul>
-<?php
+<form action="" method="POST" role="form">
+	<legend>Barre derecherche</legend>
+
+	<div class="form-group">
+		<label for="">chercher</label>
+		<input name="recherche"  type="text" class="form-control" id="" placeholder="Input field">
+	</div>
+
+
+	<button name="submit" type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<?php if($recherche==1){ ?>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Test</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                while($req1 = $res->fetch())
+                {
+                ?>
+            <tr>
+                <td><a href='<?php echo "index.php?page=viewSal&id_s=".$data['id_s']; ?>'><?= $req1['nom_s'] ; ?></a></td>
+            </tr>
+            
+            <?php } ?>
+            <?php 
+                while($req2 = $res1->fetch())
+                {
+                ?>
+            <tr>
+                <td><?= $req2['adresse'] ; ?></td>
+            </tr>
+            
+            <?php } ?>
+            <?php 
+                while($req3 = $res2->fetch())
+                {
+                ?>
+            <tr>
+                <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$data['id_f']; ?>'><?= $req3['Titre'] ; ?></a></td>
+            </tr>
+            
+            <?php } ?> 
+                 <?php 
+                while($req4 = $res3->fetch())
+                {
+                ?>
+            <tr>
+                <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$data['id_f']; ?>'><?= $req4['date_deb'] ; ?></a></td>
+            </tr>
+            
+            <?php } ?>
+        </tbody>
+    </table>
+
+<?php } ?>
 

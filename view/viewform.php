@@ -32,6 +32,42 @@
         </div>
     </div>
 </div>
+
+<form action="#" method="POST" >
+	<legend>Commenter</legend>
+
+	<div class="form-group">
+		<label for="">Commenter</label>
+		<input name="comm" type="text" class="form-control" id="" placeholder="Commenter ici">
+	</div>
+	<button name="poster" type="submit" class="btn btn-primary">Poster</button>
+</form>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Commentaire</th>
+                <th>Poster par</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+               <?php 
+                while($req1 = $res2->fetch())
+                {
+                ?>
+            <tr>
+                <td><?= $req1['libelle'] ; ?></td>
+                <td><?= $req1['nom_s'] ; ?></td>
+                <td><?= $req1['Date'] ; ?></td>
+            </tr>
+            
+            <?php } ?>
+        </tbody>
+    </table>
+
+
+
 </body>
 
 </html>
