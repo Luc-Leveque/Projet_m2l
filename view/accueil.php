@@ -1,11 +1,8 @@
-<h1>Les derniers articles</h1>
-
-
 <form action="" method="POST" role="form">
 	<legend>Barre derecherche</legend>
 
 	<div class="form-group">
-		<label for="">chercher</label>
+		<label for="">Chercher</label>
 		<input name="recherche"  type="text" class="form-control" id="" placeholder="Input field">
 	</div>
 
@@ -18,7 +15,7 @@
 <table class="table">
         <thead>
             <tr>
-                <th>Test</th>
+                <th>Resultat :</th>
             </tr>
         </thead>
         <tbody>
@@ -27,16 +24,7 @@
                 {
                 ?>
             <tr>
-                <td><a href='<?php echo "index.php?page=viewSal&id_s=".$data['id_s']; ?>'><?= $req1['nom_s'] ; ?></a></td>
-            </tr>
-            
-            <?php } ?>
-            <?php 
-                while($req2 = $res1->fetch())
-                {
-                ?>
-            <tr>
-                <td><?= $req2['adresse'] ; ?></td>
+                <td><a href='<?php echo "index.php?page=viewSal&id_s=".$req1['id_s']; ?>'><?= $req1['nom_s'] ; ?><?= $req1['prenom_s'] ; ?></a></td>
             </tr>
             
             <?php } ?>
@@ -45,7 +33,7 @@
                 {
                 ?>
             <tr>
-                <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$data['id_f']; ?>'><?= $req3['Titre'] ; ?></a></td>
+                <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req2['id_f']; ?>'><?= $req3['Titre'] ; ?></a></td>
             </tr>
             
             <?php } ?> 
