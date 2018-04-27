@@ -22,8 +22,7 @@ if(isset($_SESSION['erreur']) && $_SESSION['erreur'] != ""){
 
     <?php  if($_SESSION['lvl'] == 0 ){        
     
-
-                while($req = $res->fetch())
+        while($req = $res->fetch())
                 {
                 ?>
                 <tr>

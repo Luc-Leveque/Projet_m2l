@@ -24,19 +24,14 @@ if(isset($_GET['cd'])){
     
 }
 
-
-if($_SESSION['lvl'] == 0){$etat = 0;}
-if($_SESSION['lvl'] == 1 ){$etat = 1;}
-
-if($etat == 1){
-    //coutcredit($id_f,$cc);
-    //coutdurée($id_f,);
-}
-
 if(verifdejademande($id_f,$id_s)){
     $_SESSION['erreur'] = "Vous avez déjà postuler a cette formation" ;
 }
-else{demande($id_s,$id_f,$etat);}
+else{
+    demande($id_s,$id_f,$etat);
+    coutcredit($id_f,$cc);
+    coutdurée($id_f,$cd);
+}
 
 header('Location: ' . BASE_URL . '/Formations');
 
