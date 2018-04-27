@@ -12,6 +12,7 @@ $erreur = "";
     {
         $email = htmlentities($_POST['email']);
         $mdp = htmlentities(sha1($_POST['mdp']));
+        
         if($reponse = login($email,$mdp)){
             $_SESSION['connecte']=true;
             $_SESSION['id']= $reponse['id_s'];
@@ -23,7 +24,9 @@ $erreur = "";
             $_SESSION['lvl']= $reponse['estchef'];
             if(isset($_POST['remember']))
             {
-                $key = $reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']);    
+                //$key = $reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']);  
+                 
+            setcookie('auth',$reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']),time()+(3600*24*3),'/','localhost',false,true);
             }
             header('Location: ' . BASE_URL . '/accueil');
         }
@@ -34,32 +37,34 @@ $erreur = "";
             
         }
     }
-/*    if(isset($_COOKIE['Auth']))
+   if(isset($_COOKIE['auth']))
     {
-        $auth = $_COOKIE['Auth'];
+        $auth = $_COOKIE['auth'];
         $auth = explode('-----',$auth);
         $reponse = rememberMe($auth[0]);
         $key = sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']);
-       
+
         
         if($key == $auth[1])
         {
-            $_SESSION['connecte'] = true;
-            $_SESSION['id'] = $auth[0];
+            $_SESSION['connecte']=true;
+            $_SESSION['id']= $reponse['id_s'];
+            $_SESSION['nom']= $reponse['nom_s'];
+            $_SESSION['prenom']= $reponse['prenom_s'];
+            $_SESSION['email']= $reponse['email'];
+            $_SESSION['credit']= $reponse['credit'];
+            $_SESSION['nbj']= $reponse['nbj'];
+            $_SESSION['lvl']= $reponse['estchef'];
             
-            setcookie('Auth', $requete['id_u']."-----".sha1($requete['email'].$requete['mdp'].$_SERVER['REMOTE_ADDR']),time()+(3600*24*3),'/','localhost',false,true);
+            setcookie('auth', $reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']),time()+(3600*24*3),'/','localhost',false,true);
             
-            header("location:".BASE_URL."/accueil");
+        header("location:".BASE_URL."/accueil");
         }
         else
         {
-        setcookie('Auth','',time()-3600,'/','localhost',false,true);
+        setcookie('auth','',time()-3600,'/','localhost',false,true);
             
         }
-    }*/
-
-//if(isset($_SESSION) && $_SESSION){
-//    die('sa marche') ;
-//}
+    }
 
 require "view/login.php";

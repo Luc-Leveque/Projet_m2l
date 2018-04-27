@@ -20,7 +20,7 @@
                     <td><?php echo $req['prenom_s']; ?></td>
                     <td><?php echo $req['Titre']; ?></td>
                     <td><?php echo $req['nom_p']; ?></td>
-                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voire</a> 
+                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voir</a> 
                     </td>
                     <td><a href='<?php echo "index.php?page=validation&id_f=".$req['id_f']."&id_s=".$req['id_s']; ?>'>Valider la formation</a>
                     </td>
@@ -56,7 +56,7 @@
                     <td><?php echo $req2['prenom_s']; ?></td>
                     <td><?php echo $req2['Titre']; ?></td>
                     <td><?php echo $req2['nom_p']; ?></td>
-                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req2['id_f']; ?>'>Voire</a> 
+                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req2['id_f']; ?>'>Voir</a> 
                     </td>
                 </tr>
                     <?php
@@ -88,7 +88,7 @@
                     <td><?php echo $req3['prenom_s']; ?></td>
                     <td><?php echo $req3['Titre']; ?></td>
                     <td><?php echo $req3['nom_p']; ?></td>
-                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req3['id_f']; ?>'>Voire</a> 
+                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req3['id_f']; ?>'>Voir</a> 
                     </td>
                 </tr>
                     <?php

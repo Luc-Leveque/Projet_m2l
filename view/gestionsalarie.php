@@ -100,7 +100,7 @@
                         <td><?php echo $data['prenom_s']; ?></td>
                         <td><?php echo $data['email']; ?></td>
                         <td><?php if($data['estchef']==1){echo"oui";}else{echo"non";} ?></td>
-                        <td><a href='<?php echo "index.php?page=viewSal&id_f=".$data['id_s']; ?>'>Voire</a> 
+                        <td><a href='<?php echo "index.php?page=viewSal&id_f=".$data['id_s']; ?>'>Voir</a> 
                         </td>
                         <td><a href='<?php echo "index.php?page=suppsalarie&id_s=".$data['id_s']."&id_a=".$data['id_a']; ?>'>Supprimer</a> 
                         </td>

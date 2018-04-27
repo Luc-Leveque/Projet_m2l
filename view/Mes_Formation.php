@@ -36,7 +36,7 @@
                               if($req['etat']==1){echo "Formation validée";}
                               if($req['etat']==2){echo "Formation refusée";}
                               if($req['etat']==3){echo "Formation efectuée";} ?></td>
-                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voire</a> 
+                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voir</a> 
                     </td>
                 </tr>
                     <?php

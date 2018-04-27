@@ -28,7 +28,7 @@
                     <td><?php echo $req['adresse']; ?></td>
                     <td><?php echo $req['nom_p']; ?></td>
                     <td><?php echo $req['libelle']; ?></td>
-                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voire</a> 
+                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voir</a> 
                     </td>
                     <td><a href='<?php echo "index.php?page=demande&id_f=".$req['id_f']; ?>'>Postuler</a>
                     </td>

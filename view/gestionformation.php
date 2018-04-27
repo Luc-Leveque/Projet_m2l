@@ -171,7 +171,7 @@ $(document).ready(function(){
                     <td><?php echo $data['adresse']; ?></td>
                     <td><?php echo $data['nom_p']; ?></td>
                     <td><?php echo $data['libelle']; ?></td>
-                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$data['id_f']; ?>'>Voire</a> 
+                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$data['id_f']; ?>'>Voir</a> 
                     </td>
                     <td><a href='<?php echo "index.php?page=suppform&id_f=".$data['id_f']."&id_a=".$data['id_a']; ?>'>Supprimer </a></td>
                     <td><a href='<?php echo "index.php?page=modform&id_f=".$data['id_f']; ?>'>modifier</a>

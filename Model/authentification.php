@@ -119,11 +119,11 @@ function verifemail($email){
 }
 
 
-function rememberMe($id_u)
+function rememberMe($id_s)
     {
         global $bdd;
-        $requete = $bdd->prepare("SELECT * FROM users WHERE id_u =:id_u");
-        $requete->bindValue(":id_u", $id_u, PDO::PARAM_INT);
+        $requete = $bdd->prepare("SELECT * FROM salarié WHERE id_s =:id_s");
+        $requete->bindValue(":id_s", $id_s, PDO::PARAM_INT);
         $requete->execute();
         
         return $requete->fetch();

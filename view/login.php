@@ -14,7 +14,7 @@
                         <input type="password" name="mdp" class="form-control" id="exampleInputPassword1" placeholder="Mdp"> </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox">Se souvenir de moi </label>
+                            <input name="remember" type="checkbox">Se souvenir de moi </label>
                     </div>
                     <button type="submit" name="submit" class="btn btn-default">Valider</button>
                 </form>
