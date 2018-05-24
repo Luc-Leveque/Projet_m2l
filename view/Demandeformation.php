@@ -24,7 +24,7 @@
                     </td>
                     <td><a href='<?php echo "index.php?page=validation&id_f=".$req['id_f']."&id_s=".$req['id_s']; ?>'>Valider la formation</a>
                     </td>
-                    <td><a href='<?php echo "index.php?page=refuser&id_f=".$req['id_f']."&id_s=".$req['id_s']; ?>'>Refuser la formation</a>
+                    <td><a href='<?php echo "index.php?page=refuser&id_f=".$req['id_f']."&id_s=".$req['id_s']."&cc=".$req['cout_credit']."&cd=".$req['nbr_jour'];  ?>'>Refuser la formation</a>
                     </td>
                 </tr>
                     <?php

@@ -35,7 +35,7 @@ if(isset($_SESSION['erreur']) && $_SESSION['erreur'] != ""){
                     <td><?php echo $req['libelle']; ?></td>
                     <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voir</a> 
                     </td>
-                    <td><a href='<?php echo "index.php?page=demande&id_f=".$req['id_f']; ?>'>Postuler</a>
+                    <td><a href='<?php echo "index.php?page=demande&id_f=".$req['id_f']."&cc=".$req['cout_credit']."&cd=".$req['nbr_jour']; ?>'>Postuler</a>
                     </td>
                 </tr>
                     <?php

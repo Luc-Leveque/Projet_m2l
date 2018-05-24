@@ -6,6 +6,9 @@ if(!isset($_GET['id_f'] )){
     header('Location: ' . BASE_URL . '/accueil');
 }
 
+
+$res = infosal($_SESSION['id']);
+
 $id_f = (int)$_GET['id_f']  ; 
 $id_s = $_SESSION['id'];
 $etat = 0 ;
@@ -16,10 +19,11 @@ $vd=0;
 if(isset($_SESSION['lvl']) and $_SESSION['lvl']==1){
     $etat = 1 ;
 }
-if($etat==1){
-    
-    $res = infosal($_SESSION['id']);
-    
+if(isset($_SESSION['lvl']) and $_SESSION['lvl']==0){
+    $etat = 0 ;
+}
+
+
     if(isset($_GET['cc'])){
        $cc= (int)$_GET['cc'];
        $cc= (int)$res['credit']-$cc ;;
@@ -39,8 +43,6 @@ if($etat==1){
         else{$vcd = 1 ;}
     }
 
-
-
     if(verifdejademande($id_f,$id_s)){
         $_SESSION['erreur'] = "Vous avez déjà postuler a cette formation" ;
         header('Location: ' . BASE_URL . '/Formations');
@@ -53,7 +55,7 @@ if($etat==1){
         coutdurée($id_s,$cd);
     }
     header('Location: ' . BASE_URL . '/Formations');
-}
+
 
 ?>
 
