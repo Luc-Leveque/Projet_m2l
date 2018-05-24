@@ -3,6 +3,10 @@
 require "Model/authentification.php";
 require "Model/chef.php";
 
+if(isset($_SESSION['lvl']) && $_SESSION['lvl'] != 2){
+    header('Location: ' . BASE_URL . '/accueil');
+}
+
 $res = all_sal();
 
 if(isset($_POST['submit'])) 

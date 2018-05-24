@@ -2,10 +2,9 @@
 
 require "Model/formation.php";
 
-    $_SESSION['connecte']=true;
-    $_SESSION['id_s']= 1;
-    $_SESSION['estchef']= 1;
-    $id_chef = $_SESSION['id_s'];
+if(isset($_SESSION['lvl']) && $_SESSION['lvl'] != 2){
+    header('Location: ' . BASE_URL . '/accueil');
+}
 
 
 if(isset($_POST['submit'])) 

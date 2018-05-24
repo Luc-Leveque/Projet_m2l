@@ -42,7 +42,7 @@ if(isset($_SESSION['erreur']) && $_SESSION['erreur'] != ""){
                 }
         }
 ?>
-    <?php  if($_SESSION['lvl'] == 1){
+    <?php  if($_SESSION['lvl'] == 1 ){
                 while($req = $res->fetch())
                 {
                 ?>
@@ -57,6 +57,25 @@ if(isset($_SESSION['erreur']) && $_SESSION['erreur'] != ""){
                     <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voir</a> 
                     </td>
                     <td><a href='<?php echo "index.php?page=demande&id_f=".$req['id_f']."&cc=".$req['cout_credit']."&cd=".$req['nbr_jour']; ?>'>Participer</a>
+                    </td>
+                </tr>
+                    <?php
+                }
+        }
+?>
+    <?php  if($_SESSION['lvl'] == 2 ){
+                while($req = $res->fetch())
+                {
+                ?>
+                <tr>
+                    <td><?php echo $req['Titre']; ?></td>
+                    <td><?php echo $req['date_deb']; ?></td>
+                    <td><?php echo $req['nbr_jour']; ?></td>
+                    <td><?php echo $req['cout_credit']; ?></td>
+                    <td><?php echo $req['adresse']; ?></td>
+                    <td><?php echo $req['nom_p']; ?></td>
+                    <td><?php echo $req['libelle']; ?></td>
+                    <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req['id_f']; ?>'>Voir</a> 
                     </td>
                 </tr>
                     <?php

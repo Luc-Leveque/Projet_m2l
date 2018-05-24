@@ -1,8 +1,12 @@
 <?php
 require "Model/formation.php";
 
+if(isset($_GET['id_f'] )){
+    header('Location: ' . BASE_URL . '/accueil');
+}
+
 $id_f = (int)$_GET['id_f']  ; 
-$id_s =(int)$_SESSION['id'];
+$id_s = (int)$_SESSION['id'];
 
 $res2 = comm($id_f);
 

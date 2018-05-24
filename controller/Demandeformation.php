@@ -2,6 +2,9 @@
 
 require "Model/formation.php";
 
+if(isset($_SESSION['lvl']) && $_SESSION['lvl'] != 1){
+    header('Location: ' . BASE_URL . '/accueil');
+}
 
 $id_u = $_SESSION['id'];
 

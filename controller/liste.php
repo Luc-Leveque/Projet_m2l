@@ -3,6 +3,11 @@
 require "Model/authentification.php";
 require "Model/chef.php";
 
+
+if(isset($_SESSION['lvl']) && $_SESSION['lvl'] != 1){
+    header('Location: ' . BASE_URL . '/accueil');
+}
+
 $id_s=$_SESSION['id'];
 
 $res = salduchef($id_s);

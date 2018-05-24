@@ -23,10 +23,8 @@ $erreur = "";
             $_SESSION['nbj']= $reponse['nbj'];
             $_SESSION['lvl']= $reponse['estchef'];
             if(isset($_POST['remember']))
-            {
-                //$key = $reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']);  
-                 
-            setcookie('auth',$reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']),time()+(3600*24*3),'/','localhost',false,true);
+            {      
+                setcookie('auth',$reponse['id_s']."-----".sha1($reponse['email'].$reponse['mdp'].$_SERVER['REMOTE_ADDR']),time()+(3600*24*3),'/','localhost',false,true);
             }
             header('Location: ' . BASE_URL . '/accueil');
         }
