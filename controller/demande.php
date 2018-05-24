@@ -9,6 +9,11 @@ if(isset($_GET['id_f'] )){
 
 $id_f = (int)$_GET['id_f']  ; 
 $id_s = $_SESSION['id'];
+$etat = 0 ;
+
+if(isset($_SESSION['lvl']) and $_SESSION['lvl']==1){
+    $etat = 1 ;
+}
 
 if(isset($_GET['cc'])){
    $cc= (int)$_GET['cc'];
@@ -25,8 +30,7 @@ if(isset($_GET['cd'])){
     if($cd<0){
         $_SESSION['erreur'] = "Vous n'avez plus assez de nombre de jour de formations" ;
         header('Location: ' . BASE_URL . '/Formations');
-    }
-    
+    }  
 }
 
 if(verifdejademande($id_f,$id_s)){
@@ -34,10 +38,9 @@ if(verifdejademande($id_f,$id_s)){
 }
 else{
     demande($id_s,$id_f,$etat);
-    coutcredit($id_f,$cc);
-    coutdurée($id_f,$cd);
+    coutcredit($id_s,$cc);
+    coutdurée($id_s,$cd);
 }
-
 header('Location: ' . BASE_URL . '/Formations');
 
 ?>

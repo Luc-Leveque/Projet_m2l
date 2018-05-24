@@ -194,5 +194,29 @@ function poster($id_s,$id_f,$comm){
     return $requete;
 }
 
+function coutcredit($id_s,$cc){
+    global $bdd ; 
+    
+    
+    $requete = $bdd->prepare("UPDATE salarié SET credit = :id_c WHERE id_s = :id_s");
+    $requete ->bindValue(":id_s",$id_s,PDO::PARAM_INT);
+    $requete ->bindValue(":id_c",$cc,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+}
+
+function coutdurée($id_s,$cd){
+    global $bdd ; 
+    
+    
+    $requete = $bdd->prepare("UPDATE salarié SET nbj = :id_j WHERE id_s = :id_s");
+    $requete ->bindValue(":id_s",$id_s,PDO::PARAM_INT);
+    $requete ->bindValue(":id_j",$cd,PDO::PARAM_INT);
+    $requete->execute();
+    
+    return $requete;
+}
+
 
 ?>
