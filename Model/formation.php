@@ -229,6 +229,17 @@ function historique($id)
         return ($req);
     }
 
+function infosal($id)
+    {
+        global $bdd;
+        
+        $req = $bdd->prepare("SELECT * FROM  salarié WHERE id_s = :id");
+        $req->bindValue(":id", $id, PDO::PARAM_INT);
+        $req->execute();
+        
+        return $req->fetch();
+    }
+
 
 
 ?>
