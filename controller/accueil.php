@@ -26,10 +26,10 @@ if(isset($_POST['submit'])){
     if(empty($rch)){$etat=1;}
     
     if($etat==0){
-        $res=rechsal($rch);
-        $res1=rechadd($rch);
-        $res2=rechform($rch);
-        $res3=rechdate($rch);
+        $res  = rechsal($rch);
+        $res1 = rechadd($rch);
+        $res2 = rechform($rch);
+        $res3 = rechdate($rch);
         $recherche = 1 ;
 
     }

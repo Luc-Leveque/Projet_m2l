@@ -33,7 +33,7 @@
                 {
                 ?>
             <tr>
-                <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req2['id_f']; ?>'><?= $req3['Titre'] ; ?></a></td>
+                <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req3['id_f']; ?>'><?= $req3['Titre'] ; ?></a></td>
             </tr>
             
             <?php } ?> 
@@ -42,7 +42,7 @@
                 {
                 ?>
             <tr>
-                <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$data['id_f']; ?>'><?= $req4['date_deb'] ; ?></a></td>
+                <td><a href='<?php echo "index.php?page=Cviewform&id_f=".$req4['id_f']; ?>'><?= $req4['date_deb'] ; ?></a></td>
             </tr>
             
             <?php } ?>

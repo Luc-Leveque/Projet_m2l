@@ -7,10 +7,10 @@ if(isset($_SESSION['lvl']) && $_SESSION['lvl'] != 2){
     header('Location: ' . BASE_URL . '/accueil');
 }
 
-if(isset($_GET['id_a'])){
+if(!isset($_GET['id_a'])){
     header('Location: ' . BASE_URL . '/accueil');
 }
-if(isset($_GET['id_s'])){
+if(!isset($_GET['id_s'])){
     header('Location: ' . BASE_URL . '/accueil');
 }
 
