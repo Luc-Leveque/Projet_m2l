@@ -11,7 +11,8 @@ while($req = $res->fetch())
     $date_now = strtotime('now');
     
     if($date_now - $date > 0 ){
-        maj_form($req['id_f']);   
+        maj_form($req['id_f']);
+        maj_form2($req['id_f']);      
     }
 }
 

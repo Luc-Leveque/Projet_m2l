@@ -23,9 +23,8 @@ if(isset($_POST['poster'])){
     }
 }
 
-$req = "SELECT * FROM  formation f , adresse a , prestataire p , type_formation t where id_f = $id_f  and a.id_a=f.id_a and p.id_p=f.id_p and t.id_t=f.id_t";
-$requete = $bdd->query($req);
-$data = $requete->fetch() ;
+$req = viewform($id_f);
+$data = $req->fetch() ;
 
 
 require "view/viewForm.php";

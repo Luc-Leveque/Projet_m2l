@@ -103,7 +103,7 @@ function all_form()
 {
     global $bdd;
 
-    $req = $bdd->prepare("SELECT * FROM  formation f , adresse a,prestataire p , type_formation t where f.id_a=a.id_a and p.id_p=f.id_p and f.id_t=t.id_t ");
+    $req = $bdd->prepare("SELECT * FROM  formation f , adresse a,prestataire p , type_formation t  where f.id_a=a.id_a and p.id_p=f.id_p and f.id_t=t.id_t and etat = 0   ");
     $req->execute();
     return($req);
 }
@@ -224,6 +224,18 @@ function historique($id)
         
         $req = $bdd->prepare("SELECT * FROM  formation f ,salarié s , participer pa , prestataire p ,type_formation t ,adresse a WHERE pa.id_s=s.id_s and f.id_a=a.id_a and  f.id_t=t.id_t and  f.id_f=pa.id_f and  p.id_p=f.id_p AND pa.etat = 3 AND Timestampdiff(year,curdate(),f.date_deb)<=1 AND pa.id_s = :id");
         $req->bindValue(":id", $id, PDO::PARAM_INT);
+        $req->execute();
+        
+        return ($req);
+    }
+
+
+    function viewform($id_f)
+    {
+        global $bdd;
+        
+        $req = $bdd->prepare("SELECT * FROM  formation f , adresse a , prestataire p , type_formation t where f.id_f = :id_f  and a.id_a=f.id_a and p.id_p=f.id_p and t.id_t=f.id_t");
+        $req->bindValue(":id_f", $id_f, PDO::PARAM_INT);
         $req->execute();
         
         return ($req);

@@ -22,6 +22,17 @@ function maj_form($id){
     return $requete->fetchAll();
 }
 
+function maj_form2($id){
+    
+    global $bdd ; 
+    
+    $requete = $bdd->prepare("UPDATE formation f  SET etat = 1 WHERE  id_f = :id  ");
+    $requete ->bindValue(":id",$id,PDO::PARAM_INT);
+    $requete->execute();
+    return $requete->fetchAll();
+}
+
+
 
 function get_last_formation($deb= 0 , $fin = 5){
     
@@ -82,4 +93,17 @@ function rechdate($rch){
     return($req4);
     
 }
+
+    function viewsal($id_s)
+    {
+        global $bdd;
+        
+        $req = $bdd->prepare("SELECT * FROM  salarié where id_s= :id");
+        $req->bindValue(":id", $id_s, PDO::PARAM_INT);
+        $req->execute();
+        
+        return ($req);
+    }
+
+
 ?>
