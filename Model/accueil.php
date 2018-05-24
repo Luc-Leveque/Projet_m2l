@@ -1,6 +1,28 @@
 <?php
 
 
+function date_formations(){
+        
+    global $bdd;
+
+    $req = $bdd->prepare("SELECT id_f, date_deb, nbr_jour FROM formation  ");
+    $req->execute();
+    return($req);
+    
+}
+
+
+function maj_form($id){
+    
+    global $bdd ; 
+    
+    $requete = $bdd->prepare("UPDATE participer p  SET etat = 3 WHERE  id_f = :id  ");
+    $requete ->bindValue(":id",$id,PDO::PARAM_INT);
+    $requete->execute();
+    return $requete->fetchAll();
+}
+
+
 function get_last_formation($deb= 0 , $fin = 5){
     
     global $bdd ; 

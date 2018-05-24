@@ -218,5 +218,17 @@ function coutdurée($id_s,$cd){
     return $requete;
 }
 
+function historique($id)
+    {
+        global $bdd;
+        
+        $req = $bdd->prepare("SELECT * FROM  formation f ,salarié s , participer pa , prestataire p ,type_formation t ,adresse a WHERE pa.id_s=s.id_s and f.id_a=a.id_a and  f.id_t=t.id_t and  f.id_f=pa.id_f and  p.id_p=f.id_p AND pa.etat = 3 AND Timestampdiff(year,curdate(),f.date_deb)<=1 AND pa.id_s = :id");
+        $req->bindValue(":id", $id, PDO::PARAM_INT);
+        $req->execute();
+        
+        return ($req);
+    }
+
+
 
 ?>

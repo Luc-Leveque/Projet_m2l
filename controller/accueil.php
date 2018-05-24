@@ -1,6 +1,20 @@
 <?php
 
-require "Model/article.php";
+require "Model/accueil.php";
+
+$res = date_formations() ;
+
+while($req = $res->fetch())
+{
+    $date = strtotime($req['date_deb']);
+    $date += $req['nbr_jour'] ;
+    $date_now = strtotime('now');
+    
+    if($date_now - $date > 0 ){
+        maj_form($req['id_f']);   
+    }
+}
+
 
 $recherche=0;
 

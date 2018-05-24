@@ -2,7 +2,7 @@
 
 session_start();//connexion bdd	
 
-require "Model/cfg.php";
+require "Model/connect.php";
 require "core/function.php";
 
 

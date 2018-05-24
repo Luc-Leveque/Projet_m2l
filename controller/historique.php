@@ -1,7 +1,7 @@
-
 <?php
-require"Model/accueil.php";
-$titre = "Accueil";
-$res = all_type_form();
-require "View/accueil.php";
+
+    require"Model/formation.php";
+    $titre = "Accueil";
+    $res = historique($_SESSION['id']);
+    require "View/historique.php";
 ?>
