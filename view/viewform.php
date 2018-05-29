@@ -58,9 +58,9 @@
                // {
                 ?>
             <tr>
-                <td><?= //$req1['libelle'] ; ?></td>
-                <td><?=// $req1['nom_s'] ; ?></td>
-                <td><?=// $req1['Date'] ; ?></td>
+                <td><?//= $req1['libelle'] ; ?></td>
+                <td><?//= $req1['nom_s'] ; ?></td>
+                <td><?//= $req1['Date'] ; ?></td>
             </tr>
             
             <?php //} ?>
