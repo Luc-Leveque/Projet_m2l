@@ -33,6 +33,7 @@
     </div>
 </div>
 
+<!--
 <form action="#" method="POST" >
 	<legend>Commenter</legend>
 
@@ -52,19 +53,20 @@
             </tr>
         </thead>
         <tbody>
-               <?php 
-                while($req1 = $res2->fetch())
-                {
+               //<?php 
+               // while($req1 = $res2->fetch())
+               // {
                 ?>
             <tr>
-                <td><?= $req1['libelle'] ; ?></td>
-                <td><?= $req1['nom_s'] ; ?></td>
-                <td><?= $req1['Date'] ; ?></td>
+                <td><?= //$req1['libelle'] ; ?></td>
+                <td><?=// $req1['nom_s'] ; ?></td>
+                <td><?=// $req1['Date'] ; ?></td>
             </tr>
             
-            <?php } ?>
+            <?php //} ?>
         </tbody>
     </table>
+-->
 
 
 
